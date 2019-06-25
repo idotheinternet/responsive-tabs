@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -7,10 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class TabsComponent {
 
-  constructor(){}
+  constructor(){
+    console.log(this.tabsCon);
+  }
 
   @Input() level: number;
   @Input() tabs: object[] = [];
+  @ViewChild('tabsCon') tabsCon: HTMLDivElement;
 
   idx: number = 0;
 
@@ -25,7 +28,7 @@ export class TabsComponent {
 
   appendTab() {
     const entities: string[] = ['Installer ', 'Project ', 'Something '],
-    random: string = entities[Math.floor(Math.random() * entities.length)] + Math.random().toString().substring(2, 15);
+    random: string = entities[Math.floor(Math.random() * entities.length)] + Math.random().toString().substring(2, 9);
     this.tabs.push({
       label: random,
       isDynamic: true
