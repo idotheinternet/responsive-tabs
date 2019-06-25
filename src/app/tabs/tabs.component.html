@@ -1,16 +1,21 @@
 <div class="tabs">
-  <div class="tab" *ngFor="let tab of tabs; let i = index;" [ngClass]="{'active': tab.active}" (click)="activateTab(i)">
-    <div class="tab-side">
-      <div class="tab-side-inner l"></div>
-    </div>
-    <div class="tab-inner">
-      <i class="far fa-map-pin" *ngIf="level === 1 && tab.isDynamic"></i>
-      <div class="tab-label">{{ tab.label }}</div>
-      <i class="far fa-times" *ngIf="tab.isDynamic"></i>
-    </div>
-    <div class="tab-side">
-      <div class="tab-side-inner r">
-        <div class="tab-sep" *ngIf="tabs[i+1] ? !tabs[i+1].active : !tab.active"></div>
+  <div class="tabs-manager" *ngIf="level === 1" (click)="appendTab()">
+    <i class="fas fa-cog"></i>
+  </div>
+  <div class="tabs-container">
+    <div class="tab" *ngFor="let tab of tabs; let i = index;" [ngClass]="{'active': i === idx}">
+      <div class="tab-side">
+        <div class="tab-side-inner l"></div>
+      </div>
+      <div class="tab-inner">
+        <i class="far fa-map-pin" *ngIf="level === 1 && tab.isDynamic"></i>
+        <div class="tab-label" (click)="activateTab(i)">{{ tab.label }}</div>
+        <i class="far fa-times" *ngIf="tab.isDynamic" (click)="removeTab(i)"></i>
+      </div>
+      <div class="tab-side">
+        <div class="tab-side-inner r">
+          <div class="tab-sep" *ngIf="i+1 !== idx"></div>
+        </div>
       </div>
     </div>
   </div>
