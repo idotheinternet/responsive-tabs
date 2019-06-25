@@ -25,7 +25,7 @@ export class TabsComponent {
 
   appendTab() {
     const entities: string[] = ['Installer ', 'Project ', 'Something '],
-    random: string = entities[Math.floor(Math.random() * entities.length)] + Math.random().toString().substring(2, 8);
+    random: string = entities[Math.floor(Math.random() * entities.length)] + Math.random().toString().substring(2, 15);
     this.tabs.push({
       label: random,
       isDynamic: true
