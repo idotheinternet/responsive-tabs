@@ -2,11 +2,14 @@
 <app-tabs [level]="1" [tabs]="level1"></app-tabs>
 <div class="container">
     <div class="detail">
-        <div class="fill">Content</div>
+        Detail
+        <div class="fill" style="margin-top: 35px;">Content</div>
     </div>
     <div class="content">
+        <div style="position: relative; width: 100%; height: auto; overflow: hidden;">
         <app-tabs [level]="2" [tabs]="level2"></app-tabs>
         <div class="fill">Content</div>
+        </div>
     </div>
 </div>
 

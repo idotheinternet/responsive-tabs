@@ -1,5 +1,19 @@
-.container {
+app-tabs {
+    box-sizing: border-box;
     display: inline-flex;
+    position: relative;
+    width: 100%;
+    height: 35px;
+    padding: 5px 0px 0px 5px;
+    margin-bottom: 35px;
+    background-color: #eee;
+}
+app-tabs::-webkit-scrollbar {
+    display: none;
+}
+.container {
+    display: flex;
+    flex-direction: inline;
     position: relative;
     width: 100%;
     height: auto;
@@ -12,6 +26,7 @@
 .detail {
     width: 20%;
     border-right: 1px solid #d9d9d9;
+    font-size: 30px;
 }
 .content {
     width: 80%;
@@ -25,4 +40,15 @@
     background-color: rgba(0, 0, 0, .2);
     color: #fff;
     font-size: 25px;
+}
+@media(max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    .detail, .content {
+        width: 100%;
+    }
+    .content {
+        padding: 35px;
+    }
 }

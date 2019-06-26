@@ -1,7 +1,7 @@
+<div class="tabs-manager" (click)="appendTab()">
+  <i class="fas fa-cog"></i>
+</div>
 <div class="tabs" #tabsCon>
-  <div class="tabs-manager" (click)="appendTab()">
-    <i class="fas fa-cog"></i>
-  </div>
   <div class="tab" *ngFor="let tab of tabs; let i = index;" [ngClass]="{'active': i === idx}">
     <div class="tab-side">
       <div class="tab-side-inner l"></div>
@@ -16,5 +16,18 @@
         <div class="tab-sep" *ngIf="i+1 !== idx"></div>
       </div>
     </div>
+  </div>
+</div>
+<div class="burger-con" *ngIf="excWidth">
+  <div class="overflow-count" *ngIf="!toggled">{{ overflowCount }}</div>
+  <div class="burger" [ngClass]="{'active': toggled}" (click)="toggleMenu()">
+    <div class="line t"></div>
+    <div class="line m"></div>
+    <div class="line b"></div>
+  </div>
+</div>
+<div class="menu" *ngIf="excWidth" [ngClass]="{'active': toggled}">
+  <div class="menu-item" *ngFor="let tab of tabs; let i = index;" (click)="activateTab(i)">
+    {{ tab.label }}
   </div>
 </div>
