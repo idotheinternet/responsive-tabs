@@ -9,7 +9,7 @@ import { TabsService } from './tabs.service';
 
 export class TabsComponent implements AfterViewInit {
 
-  constructor(private tabsService: TabsService) {}
+  constructor(public tabsService: TabsService) {}
 
   @Input() level: number;
   @Input() tabs: object[] = [];
