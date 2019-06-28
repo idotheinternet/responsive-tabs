@@ -37,6 +37,7 @@ export class TabsComponent implements AfterViewInit {
     if(this.checkOverflow(false)) this.overflowCount--;
     if(!this.overflowCount) this.excWidth = false;
     this.width -= 200;
+    this.checkOverflow(false);
   }
 
   appendTab() {
@@ -54,6 +55,7 @@ export class TabsComponent implements AfterViewInit {
       });
       this.idx = this.tabs.length-1;
     }
+    this.getOverflow();
   }
 
   getOverflow(): number {
@@ -68,7 +70,9 @@ export class TabsComponent implements AfterViewInit {
   }
   
   checkOverflow(onAppend: boolean): boolean {
-    return this.excWidth = ((this.width + (onAppend ? 200 : 0)) - this.tabsCon.parentElement.offsetWidth) >= 100;
+    this.excWidth = ((this.width + (onAppend ? 200 : 0)) - this.tabsCon.parentElement.offsetWidth) >= 0;
+    console.log((this.width + (onAppend ? 200 : 0)) - this.tabsCon.parentElement.offsetWidth, this.excWidth);
+    return this.excWidth;
   }
 
   ngAfterViewInit() {

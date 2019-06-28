@@ -34,15 +34,15 @@
   </div>
   </div>
 </div>
-<div class="burger-con" *ngIf="overflowCount > 0 || tabsService.isMobile" [ngClass]="{'active': toggled}">
-  <div class="overflow-count" *ngIf="!toggled">{{ overflowCount }}</div>
+<div class="burger-con" *ngIf="excWidth || toggled || overflowCount > 0 || tabsService.isMobile" [ngClass]="{'active': toggled}">
+  <div class="overflow-count" *ngIf="!toggled && overflowCount > 0">{{ overflowCount }}</div>
   <div class="burger" [ngClass]="{'active': toggled}" (click)="toggleMenu()">
     <div class="line t"></div>
     <div class="line m"></div>
     <div class="line b"></div>
   </div>
 </div>
-<div class="menu" *ngIf="overflowCount > 0 || tabsService.isMobile && toggled" [ngClass]="{'active': toggled}">
+<div class="menu" [ngClass]="{'active': toggled}">
   <div class="menu-item">{{ tabs[idx].label }}</div>
   <div class="menu-item" *ngFor="let tab of tabs; let i = index;" (click)="activateTab(i)" [ngClass]="{'hidden': i === idx}">
     {{ tab.label }}
