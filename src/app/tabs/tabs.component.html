@@ -42,7 +42,7 @@
     <div class="line b"></div>
   </div>
 </div>
-<div class="menu" *ngIf="overflowCount > 0 || tabsService.isMobile" [ngClass]="{'active': toggled}">
+<div class="menu" *ngIf="overflowCount > 0 || tabsService.isMobile && toggled" [ngClass]="{'active': toggled}">
   <div class="menu-item">{{ tabs[idx].label }}</div>
   <div class="menu-item" *ngFor="let tab of tabs; let i = index;" (click)="activateTab(i)" [ngClass]="{'hidden': i === idx}">
     {{ tab.label }}
