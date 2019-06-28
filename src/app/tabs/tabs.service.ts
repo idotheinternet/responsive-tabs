@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TabsComponent } from './tabs.component';
 
-@Injectable() export class TabsService {
+@Injectable({providedIn: 'root'}) export class TabsService {
     constructor() {
-        this.isMobile = document.body.offsetWidth <= 500;
+        this.isMobile = document.body.offsetWidth <= 500; 
         window.onresize = ()=> {
             let i: number = 0;
             const inst = this.instances,

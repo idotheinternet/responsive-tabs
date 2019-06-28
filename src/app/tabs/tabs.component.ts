@@ -7,7 +7,6 @@ import { TabsService } from './tabs.service';
   styleUrls: ['./tabs.component.css']
 })
 
-
 export class TabsComponent implements AfterViewInit {
 
   constructor(private tabsService: TabsService) {}
