@@ -1,7 +1,22 @@
 <div class="tabs-manager" (click)="appendTab()">
   <i class="fas fa-cog"></i>
 </div>
-<div class="tabs" #tabsCon>
+<div class="tabs">
+  <div class="tab active" *ngIf="tabsService.isMobile">
+    <div class="tab-side">
+      <div class="tab-side-inner l"></div>
+    </div>
+    <div class="tab-inner">
+      <i class="far fa-map-pin" *ngIf="level === 1 && tabs[idx].isDynamic"></i>
+      <div class="tab-label">{{ tabs[idx].label }}</div>
+      <i class="fal fa-times" *ngIf="tabs[idx].isDynamic" (click)="removeTab(idx)"></i>
+    </div>
+    <div class="tab-side">
+      <div class="tab-side-inner r">
+      </div>
+    </div>
+  </div>
+  <div class="tabs-wrap" *ngIf="!tabsService.isMobile">
   <div class="tab" *ngFor="let tab of tabs; let i = index;" [ngClass]="{'active': i === idx}">
     <div class="tab-side">
       <div class="tab-side-inner l"></div>
@@ -9,7 +24,7 @@
     <div class="tab-inner">
       <i class="far fa-map-pin" *ngIf="level === 1 && tab.isDynamic"></i>
       <div class="tab-label" (click)="activateTab(i)">{{ tab.label }}</div>
-      <i class="far fa-times" *ngIf="tab.isDynamic" (click)="removeTab(i)"></i>
+      <i class="fal fa-times" *ngIf="tab.isDynamic" (click)="removeTab(i)"></i>
     </div>
     <div class="tab-side">
       <div class="tab-side-inner r">
@@ -17,8 +32,9 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
-<div class="burger-con" *ngIf="excWidth">
+<div class="burger-con" *ngIf="overflowCount > 0 || tabsService.isMobile" [ngClass]="{'active': toggled}">
   <div class="overflow-count" *ngIf="!toggled">{{ overflowCount }}</div>
   <div class="burger" [ngClass]="{'active': toggled}" (click)="toggleMenu()">
     <div class="line t"></div>
@@ -26,8 +42,11 @@
     <div class="line b"></div>
   </div>
 </div>
-<div class="menu" *ngIf="excWidth" [ngClass]="{'active': toggled}">
-  <div class="menu-item" *ngFor="let tab of tabs; let i = index;" (click)="activateTab(i)">
+<div class="menu" *ngIf="overflowCount > 0 || tabsService.isMobile" [ngClass]="{'active': toggled}">
+  <div class="menu-item">{{ tabs[idx].label }}</div>
+  <div class="menu-item" *ngFor="let tab of tabs; let i = index;" (click)="activateTab(i)" [ngClass]="{'hidden': i === idx}">
     {{ tab.label }}
+    <i class="fal fa-times" *ngIf="tab.isDynamic" (click)="removeTab(i)"></i>
+    <div class="item-sep"></div>
   </div>
 </div>

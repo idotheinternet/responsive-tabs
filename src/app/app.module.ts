@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { TabsService } from './tabs/tabs.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { TabsComponent } from './tabs/tabs.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [TabsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
