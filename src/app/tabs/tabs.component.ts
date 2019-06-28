@@ -60,6 +60,7 @@ export class TabsComponent implements AfterViewInit {
 
   getOverflow(): number {
     const count: number = this.overflowCount = Math.floor((this.width - this.tabsCon.parentElement.offsetWidth) / 200);
+    this.excWidth = (this.width - this.tabsCon.parentElement.offsetWidth) >= 0;
     if(count > 0 && this.idx >= this.tabs.length - count) {
       const idx: number = this.idx,
       item: object = this.tabs[idx];
