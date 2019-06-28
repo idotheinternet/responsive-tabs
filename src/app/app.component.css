@@ -1,3 +1,9 @@
+.app-con {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
 app-tabs {
     box-sizing: border-box;
     display: inline-flex;
